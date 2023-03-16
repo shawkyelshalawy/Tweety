@@ -11,7 +11,7 @@ $(document).ready(() => {
 
 function outputChatList(chatList, container) {
     chatList.forEach(chat => {
-        var html = createChatHtml(chat);
+        const html = createChatHtml(chat);
         container.append(html);
     })
 
@@ -21,10 +21,10 @@ function outputChatList(chatList, container) {
 }
 
 function createChatHtml(chatData) {
-    var chatName = getChatName(chatData);
-    var image = getChatImageElements(chatData);
-    var latestMessage = getLatestMessage(chatData.latestMessage);
-    
+    const chatName = getChatName(chatData);
+    const image = getChatImageElements(chatData);
+    const latestMessage = getLatestMessage(chatData.latestMessage);
+
     return `<a href='/messages/${chatData._id}' class='resultListItem'>
                 ${image}
                 <div class='resultsDetailsContainer ellipsis'>
@@ -36,7 +36,7 @@ function createChatHtml(chatData) {
 
 function getLatestMessage(latestMessage) {
     if(latestMessage != null) {
-        var sender = latestMessage.sender;
+        const sender = latestMessage.sender;
         return `${sender.firstName} ${sender.lastName}: ${latestMessage.content}`;
     }
 
@@ -44,10 +44,10 @@ function getLatestMessage(latestMessage) {
 }
 
 function getChatImageElements(chatData) {
-    var otherChatUsers = getOtherChatUsers(chatData.users);
+    const otherChatUsers = getOtherChatUsers(chatData.users);
 
-    var groupChatClass = "";
-    var chatImage = getUserChatImageElement(otherChatUsers[0]);
+    let groupChatClass = "";
+    let chatImage = getUserChatImageElement(otherChatUsers[0]);
 
     if(otherChatUsers.length > 1) {
         groupChatClass = "groupChatImage";

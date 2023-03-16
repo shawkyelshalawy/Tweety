@@ -8,7 +8,7 @@ $("#markNotificationsAsRead").click(() => markNotificationsAsOpened());
 
 function outputNotificationList(notifications, container) {
     notifications.forEach(notification => {
-        var html = createNotificationHtml(notification);
+        const html = createNotificationHtml(notification);
         container.append(html);
     })
 
@@ -18,10 +18,10 @@ function outputNotificationList(notifications, container) {
 }
 
 function createNotificationHtml(notification) {
-    var userFrom = notification.userFrom;
-    var text = getNotificationText(notification);
-    var href = getNotificationUrl(notification);
-    var className = notification.opened ? "" : "active";
+    const userFrom = notification.userFrom;
+    const text = getNotificationText(notification);
+    const href = getNotificationUrl(notification);
+    const className = notification.opened ? "" : "active";
 
     return `<a href='${href}' class='resultListItem notification ${className}' data-id='${notification._id}'>
                 <div class='resultsImageContainer'>
@@ -41,9 +41,9 @@ function getNotificationText(notification) {
         return alert("user from data not populated");
     }
 
-    var userFromName = `${userFrom.firstName} ${userFrom.lastName}`;
-    
-    var text;
+    const userFromName = `${userFrom.firstName} ${userFrom.lastName}`;
+
+    let text;
 
     if(notification.notificationType == "retweet") {
         text = `${userFromName} retweeted one of your posts`;
@@ -61,8 +61,8 @@ function getNotificationText(notification) {
     return `<span class='ellipsis'>${text}</span>`;
 }
 
-function getNotificationUrl(notification) { 
-    var url = "#";
+function getNotificationUrl(notification) {
+    let url = "#";
 
     if(notification.notificationType == "retweet" || 
         notification.notificationType == "postLike" || 

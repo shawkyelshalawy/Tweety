@@ -2,8 +2,8 @@ const express = require("express");
 const app = express();
 const router = express.Router();
 const bodyParser = require("body-parser");
-const User = require("../../schemas/UserSchema");
-const Post = require("../../schemas/PostSchema");
+const {User} = require("../../schemas/UserSchema");
+const {Post} = require("../../schemas/PostSchema");
 const { Notfication } = require("../../schemas/NotificationSchema");
 
 app.use(bodyParser.urlencoded({ extended: false }));
